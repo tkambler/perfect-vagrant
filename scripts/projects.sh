@@ -47,17 +47,4 @@ cd api
 npm install
 chown -R vagrant:vagrant /home/vagrant/projects/api
 
-mkdir /var/log/api
-cat << 'EOF' > /etc/supervisor/conf.d/api.conf
-[program:api]
-command=pm2 --no-daemon start /home/vagrant/projects/api/pm2/development.json
-directory=/home/vagrant/projects/api
-autostart=true
-autorestart=true
-startretries=3
-stderr_logfile=/var/log/api/api.err.log
-stdout_logfile=/var/log/api/api.out.log
-user=vagrant
-EOF
-supervisorctl reread
-supervisorctl update
+sudo -H -u vagrant bash -c 'pm2 start /home/vagrant/projects/api/pm2/development.json'
