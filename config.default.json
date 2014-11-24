@@ -10,7 +10,8 @@
             "cpus": 1,
             "memory": 2048,
             "scripts": [
-                "cloud9-update.sh"
+                "cloud9-update.sh",
+                "projects.sh"
             ]
         }
     }
