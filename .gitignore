@@ -1,0 +1,7 @@
+.DS_Store
+config.json
+.vagrant/
+/logs/*
+/mount/
+/node_modules/
+/provision.log
