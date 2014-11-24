@@ -50,7 +50,7 @@ chown -R vagrant:vagrant /home/vagrant/projects/api
 mkdir /var/log/api
 cat << 'EOF' > /etc/supervisor/conf.d/api.conf
 [program:api]
-command=pm2 --no-daemon /home/vagrant/projects/api/pm2/development.json
+command=pm2 --no-daemon start /home/vagrant/projects/api/pm2/development.json
 directory=/home/vagrant/projects/api
 autostart=true
 autorestart=true
