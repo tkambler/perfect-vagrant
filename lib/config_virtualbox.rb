@@ -117,14 +117,24 @@ def configVirtualBox(instance, server, local_config, config)
                 serverScript = "/vagrant/scripts/" + script + " 2&>1 >> /vagrant/provision.log"
                 instance.vm.provision "shell", inline: serverScript
             else
-                serverScript = "/vagrant/scripts/" + script["script"] + " 2&>1 >> /vagrant/provision.log"
-                if script.has_key?("run") && script["run"] === "always"
-                    config.vm.provision "shell", run: "always" do |s|
-                        s.inline = serverScript
+                if script.has_key?("inline")
+                    if script.has_key?("run") && script["run"] === "always"
+                        config.vm.provision "shell", run: "always" do |s|
+                            s.inline = script["inline"]
+                        end
+                    else
+                        instance.vm.provision "shell", inline: script["inline"]
                     end
                 else
-                    serverScript = "/vagrant/scripts/" + script + " 2&>1 >> /vagrant/provision.log"
-                    instance.vm.provision "shell", inline: serverScript
+                    serverScript = "/vagrant/scripts/" + script["script"] + " 2&>1 >> /vagrant/provision.log"
+                    if script.has_key?("run") && script["run"] === "always"
+                        config.vm.provision "shell", run: "always" do |s|
+                            s.inline = serverScript
+                        end
+                    else
+                        serverScript = "/vagrant/scripts/" + script + " 2&>1 >> /vagrant/provision.log"
+                        instance.vm.provision "shell", inline: serverScript
+                    end
                 end
             end
         end
