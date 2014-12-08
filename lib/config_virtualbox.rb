@@ -132,7 +132,7 @@ def configVirtualBox(instance, server, local_config, config)
                             s.inline = serverScript
                         end
                     else
-                        serverScript = "/vagrant/scripts/" + script + " 2&>1 >> /vagrant/provision.log"
+                        serverScript = "/vagrant/scripts/" + script["script"] + " 2&>1 >> /vagrant/provision.log"
                         instance.vm.provision "shell", inline: serverScript
                     end
                 end
