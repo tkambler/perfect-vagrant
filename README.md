@@ -16,3 +16,11 @@ $ vagrant plugin install vagrant-hostsupdater
 - Clone this repository
 - Update `config.default.json` as appropriate
 - From within the cloned repository's folder, run `$ vagrant up`
+- SSH into the box (see below)
+
+```
+$ vagrant ssh
+```
+
+If you have left the default values in place (`config.default.json`), the server
+should now be accessible at: 10.0.3.20 / server.site
