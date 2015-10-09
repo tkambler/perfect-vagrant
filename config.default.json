@@ -3,15 +3,17 @@
         "api": {
             "guest_ip": "10.0.3.20",
             "guest_hostname": "server.site",
-            "box": "web-master",
-            "box_url": "https://dl.dropboxusercontent.com/u/832215/master.box",
-            "github_private_key_file": "~/.ssh/id_rsa",
+            "box": "ubuntu/trusty64",
             "timezone": "America/Chicago",
             "cpus": 1,
             "memory": 2048,
             "scripts": [
-                "cloud9-update.sh",
-                "projects.sh"
+                "update.sh",
+                "supervisor.sh",
+                "git.sh",
+                "node.sh",
+                "global_node_modules.sh",
+                "ssh.sh"
             ]
         }
     }

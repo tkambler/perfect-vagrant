@@ -1,3 +1,4 @@
 #!/bin/bash
-echo "Updating Apt"
+
+echo "Updating"
 apt-get update
