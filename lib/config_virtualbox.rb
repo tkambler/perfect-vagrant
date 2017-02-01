@@ -21,12 +21,9 @@ def configVirtualBox(instance, server, local_config, config)
 
     end
 
-    # Set box type based on configuration. Defaults to `precise64` (Ubuntu).
-    # The URL that you see below is from Vagrant's own list of available boxes:
-    # http://www.vagrantbox.es/
+    # Set box based on configuration. Defaults to `ubuntu/precise64`
     if !server["box"]
-        instance.vm.box = "precise64"
-        instance.vm.box_url = "http://files.vagrantup.com/precise64.box"
+        instance.vm.box = "ubuntu/precise64"
     else
         instance.vm.box = server["box"]
         instance.vm.box_url = server["box_url"]
