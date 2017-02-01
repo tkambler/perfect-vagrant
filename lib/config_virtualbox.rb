@@ -1,4 +1,4 @@
-def configVirtualBox(instance, server, local_config, config)
+def configVirtualBox(instance, server_id, server, local_config, config, vagrant_command)
 
     instance.vm.provider "virtualbox" do |v|
 
@@ -24,6 +24,10 @@ def configVirtualBox(instance, server, local_config, config)
     # Set box based on configuration. Defaults to `ubuntu/precise64`
     if !server["box"]
         instance.vm.box = "ubuntu/precise64"
+
+        if vagrant_command == 'up'
+            puts "No 'box' property defined for the '#{server_id}' VM in the config JSON. Loading default '#{instance.vm.box}' box." 
+        end
     else
         instance.vm.box = server["box"]
         instance.vm.box_url = server["box_url"]
