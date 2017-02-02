@@ -19,6 +19,7 @@ def loadConfig()
 
     if config["override"]["servers"]
         config["override"]["servers"].each do |key, value|
+            result["servers"][key] = {}
             value.each do |server_key, server_value|
                 result["servers"][key][server_key] = server_value
             end
