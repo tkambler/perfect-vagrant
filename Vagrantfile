@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
         config.vm.define server_id, primary: server["primary"], autostart: server["autostart"] do |instance|
             case local_config["provider"]
                 when "virtualbox"
-                    configVirtualBox(instance, server, local_config, config)
+                    configVirtualBox(instance, server_id, server, local_config, config, vagrantCMD)
                 else
                     puts "Error: Unknown provider specified: " + server["provider"]
             end
